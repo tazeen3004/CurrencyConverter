@@ -12,6 +12,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var  myCurrency:[String] = []
     var  myValues:[Double] = []
+    var activeCurrency:Double = 0
     
     //objects
     @IBOutlet weak var input: UITextField!
@@ -20,14 +21,33 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //CREATING PICKER VIEW
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
     
         return 1
     }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return myCurrency.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        return myCurrency[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+            activeCurrency = myValues[row]
+    }
     
+    //button
     
-    
-    
+    @IBAction func action(_ sender: Any)
+    {
+        if (input.text != "")
+        {
+        output.text = String(Double(input.text!)! * activeCurrency)
+        }
+    }
     
         override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +87,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                     
                 }
+                self.pickerView.reloadAllComponents()
             }
             task.resume()
         // Do any additional setup after loading the view, typically from a nib.

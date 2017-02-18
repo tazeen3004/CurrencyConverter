@@ -28,6 +28,9 @@
                                 <state key="normal" title="Convert">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j6y-WY-tBy"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-fH-Bro">
                                 <rect key="frame" x="0.0" y="257" width="375" height="216"/>
